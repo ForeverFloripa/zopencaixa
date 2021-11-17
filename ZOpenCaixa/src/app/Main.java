@@ -8,8 +8,6 @@ public class Main {
 
 	private static void buscaStatus() {
 		Validator val = new Validator();
-		
-		
 		val.iniciarSistema();
 	}
 
