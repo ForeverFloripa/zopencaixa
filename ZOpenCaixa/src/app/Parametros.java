@@ -7,7 +7,7 @@ import java.util.Properties;
 
 public class Parametros {
 	//arquivo de parametros editaveis
-		public static final String arquivoProp = "C:\\ZEBRA\\ALM\\SERVICE\\PROPERTIES\\local.properties";
+		public static final String arquivoProp = "C:\\DBSAC\\ALM\\SERVICE\\PROPERTIES\\local.properties";
 
 		public Properties getPropt() throws IOException {
 			Properties props = new Properties();

@@ -15,12 +15,30 @@ import java.util.Calendar;
 import java.util.Date;
 
 import javax.swing.JOptionPane;
+import javax.swing.plaf.OptionPaneUI;
 
 public class Validator implements Valores {
 
-	public static final String arquivoTime = "C:\\ZEBRA\\ALM\\SERVICE\\PROPERTIES\\system.ini";
-	public static final String serverValue = "C:\\ZEBRA\\ALM\\SERVICE\\PROPERTIES\\serverValue.ini";
-	public static final String arquivoProp = "C:\\ZEBRA\\ALM\\SERVICE\\PROPERTIES\\local.properties";
+	public static final String arquivoTime = "C:\\DBSAC\\ALM\\SERVICE\\PROPERTIES\\system.ini";
+	public static final String serverValue = "C:\\DBSAC\\ALM\\SERVICE\\PROPERTIES\\serverValue.ini";
+	public static final String arquivoProp = "C:\\DBSAC\\ALM\\SERVICE\\PROPERTIES\\local.properties";
+	
+	
+	public void iniciarSistema() {
+		String lido = getTxtServer();
+		writeServerValue(lido);
+		
+		if (getStatusCnpj(lido)) {
+			// indica que esta liberado
+			resetControlDateFile();
+			System.out.println("Abrindo o caixa");
+			carregaSistema();
+			
+		} else {
+			// sem internet ou bloqueado
+			controlaDatasBloqueio(); 
+		}
+	}
 
 	@Override
 	public String getTxtServer() {
@@ -37,16 +55,17 @@ public class Validator implements Valores {
 
 			String str = inputLine != null ? inputLine : "";
 			str = str.trim();
-
+			System.out.println("Retorno server"+str);
 			return str;
 
 //
 		} catch (Exception e) {
+			JOptionPane.showInputDialog("    		Erro de Ativação - Verifique sua conexao com a Internet  		    ");
+			
 			e.printStackTrace();
 			return "false";
 		}
 	}
-
 	
 
 
@@ -206,21 +225,7 @@ public class Validator implements Valores {
 		return false;
 	}
 
-	public void iniciarSistema() {
-		String lido = getTxtServer();
-		writeServerValue(lido);
-		
-		if (getStatusCnpj(lido)) {
-			// indica que esta liberado
-			resetControlDateFile();
-			System.out.println("Abrindo o caixa");
-			carregaSistema();
-			
-		} else {
-			// sem internet ou bloqueado
-			controlaDatasBloqueio(); 
-		}
-	}
+
 
 	@Override
 	public void controlaDatasBloqueio() {
@@ -248,7 +253,18 @@ public class Validator implements Valores {
 	
 	public void carregaSistema() {
 		try {
-			Runtime.getRuntime().exec("cmd /c \"c:\\zebra\\zpate\\cax.exe");
+			//Runtime.getRuntime().exec("cmd /c \"c:\\zebra\\zpate\\atalhos\\caixa.lnk");
+			//String comando = "cmd  \"msm.exe /autoconfig=TALI \"SAC,SAC:SERVIDOR\"";
+			//System.out.println(comando);
+			
+			//Runtime.getRuntime().exec("cmd /c \"C:\\DBSAC\\");
+			//Runtime.getRuntime().exec("cmd /c \"c:\\zebra\\zpate\\atalhos\\caixa.lnk");
+			//Runtime.getRuntime().exec("cmd /c \"C:\\DBSAC\\msm.exe /autoconfig=TALI 'SAC,SAC:SERVIDOR"");
+			
+			
+			Runtime.getRuntime().exec("cmd /c \"C:\\DBSAC\\msm.exe /autoconfig=TALI \"SAC,SAC:SERVIDOR\"");
+		
+			
 		} catch (IOException e) {
 			JOptionPane.showMessageDialog(null,"Falha ao abrir o caixa");
 			e.printStackTrace();
