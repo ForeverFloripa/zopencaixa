@@ -15,7 +15,6 @@ import java.util.Calendar;
 import java.util.Date;
 
 import javax.swing.JOptionPane;
-import javax.swing.plaf.OptionPaneUI;
 
 public class Validator implements Valores {
 
