@@ -18,9 +18,9 @@ import javax.swing.JOptionPane;
 
 public class Validator implements Valores {
 
-	public static final String arquivoTime = "C:\\DBSAC\\ALM\\SERVICE\\PROPERTIES\\system.ini";
-	public static final String serverValue = "C:\\DBSAC\\ALM\\SERVICE\\PROPERTIES\\serverValue.ini";
-	public static final String arquivoProp = "C:\\DBSAC\\ALM\\SERVICE\\PROPERTIES\\local.properties";
+	public static final String arquivoTime = "C:\\ALMCONNECT\\SERVICE\\PROPERTIES\\system.ini";
+	public static final String serverValue = "C:\\ALMCONNECT\\SERVICE\\PROPERTIES\\serverValue.ini";
+	public static final String arquivoProp = "C:\\ALMCONNECT\\SERVICE\\PROPERTIES\\local.properties";
 	
 	
 	public void iniciarSistema() {
@@ -45,6 +45,9 @@ public class Validator implements Valores {
 			Parametros p = new Parametros();
 			final String cnpj = p.cnpj();
 			final String url = p.url() + cnpj + ".txt";
+			
+			System.out.println(url);
+			
 			String inputLine;
 			URL serverFile = new URL(url);
 			URLConnection yc = serverFile.openConnection();
@@ -261,8 +264,13 @@ public class Validator implements Valores {
 			//Runtime.getRuntime().exec("cmd /c \"C:\\DBSAC\\msm.exe /autoconfig=TALI 'SAC,SAC:SERVIDOR"");
 			
 			
-			Runtime.getRuntime().exec("cmd /c \"C:\\DBSAC\\msm.exe /autoconfig=TALI \"SAC,SAC:SERVIDOR\"");
+			/*
+			 * Runtime.getRuntime().
+			 * exec("cmd /c \"C:\\DBSAC\\msm.exe /autoconfig=TALI \"SAC,SAC:SERVIDOR\"");
+			 */
 		
+			Runtime.getRuntime().exec("cmd /c \"c:\\zebra\\zpate\\atalhos\\caixa.lnk");
+			
 			
 		} catch (IOException e) {
 			JOptionPane.showMessageDialog(null,"Falha ao abrir o caixa");

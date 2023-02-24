@@ -1,5 +1,4 @@
-[Feb-18-22 17:35:51]   MSM startup:
-[Feb-18-22 17:35:51]      Database: database.msm
-[Feb-18-22 17:35:51]      Partition execution stack= 60K; Expression stack= 60K
-[Feb-18-22 17:35:51]   main: C Exception frame @ 0x19FF60
-[Feb-18-22 17:35:53]   MSMCtrlHandler: emergency shutdown requested, code=2
+[Feb-24-23 00:52:02]   MSM startup:
+[Feb-24-23 00:52:02]      Database: database.msm
+[Feb-24-23 00:52:02]      Partition execution stack= 60K; Expression stack= 60K
+[Feb-24-23 00:52:02]   main: C Exception frame @ 0x19FF60
